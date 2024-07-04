@@ -2,6 +2,8 @@ import requests
 import base64
 import os
 import argparse
+import xml.etree.ElementTree as ET
+import re
 
 # Function to read credentials from a file
 def read_credentials(file_path):
@@ -12,9 +14,23 @@ def read_credentials(file_path):
             credentials[key] = value
     return credentials
 
+# Function to clean XML content
+def clean_xml_content(xml_content):
+    # Remove any invalid characters that might cause issues
+    cleaned_content = re.sub(r'[^\x09\x0A\x0D\x20-\x7F]', '', xml_content)
+    return cleaned_content
+
+# Function to validate XML
+def validate_xml(xml_content):
+    try:
+        ET.fromstring(xml_content)
+        return True, None
+    except ET.ParseError as e:
+        return False, str(e)
+
 # Function to submit a submission
 def submit_submission(url, headers, submission_xml):
-    response = requests.post(url, headers=headers, data=submission_xml)
+    response = requests.post(url, headers=headers, data=submission_xml.encode('utf-8'))
 
     if response.status_code in (200, 201):
         print(f"Successfully submitted: {submission_xml[:50]}...")
@@ -62,9 +78,20 @@ def main():
             file_path = os.path.join(folder_name, filename)
             with open(file_path, 'r', encoding='utf-8') as file:
                 submission_xml = file.read()
-                submit_submission(submission_url, headers, submission_xml)
+
+                # Clean the XML content
+                cleaned_xml = clean_xml_content(submission_xml)
+
+                # Validate XML
+                is_valid, error_message = validate_xml(cleaned_xml)
+                if not is_valid:
+                    print(f"Invalid XML in file {filename}: {error_message}")
+                    continue
+
+                # Submit the XML data
+                submit_submission(submission_url, headers, cleaned_xml)
 
 if __name__ == '__main__':
     main()
 
-#EXAMPLE : python3.11 03_submit_to_Central.py 138 "test" "20240704101524" "credentials.txt"
+# EXAMPLE : python3.11 03_submit_to_Central.py 138 "test" "20240704101524" "credentials.txt"
