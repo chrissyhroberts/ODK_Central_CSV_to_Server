@@ -1,0 +1,143 @@
+{
+    "schema": "1",
+    "survey": [
+        {
+            "name": "Q1",
+            "type": "text",
+            "$kuid": "QdwC3yK1L",
+            "label": [
+                "Question 1"
+            ],
+            "$qpath": "Q1",
+            "$xpath": "Q1",
+            "required": false,
+            "$autoname": "Q1"
+        },
+        {
+            "name": "Q2",
+            "type": "select_one",
+            "$kuid": "FiwHmsUPh",
+            "label": [
+                "Question 2"
+            ],
+            "$qpath": "Q2",
+            "$xpath": "Q2",
+            "required": false,
+            "$autoname": "Q2",
+            "select_from_list_name": "pop"
+        },
+        {
+            "name": "L1",
+            "type": "begin_group",
+            "$kuid": "w4Vm1Il76",
+            "label": [
+                "Level 1"
+            ],
+            "$qpath": "L1",
+            "$xpath": "L1",
+            "required": false,
+            "$autoname": "L1"
+        },
+        {
+            "name": "Q3",
+            "type": "text",
+            "$kuid": "vpG2QDGIu",
+            "label": [
+                "Question 3"
+            ],
+            "$qpath": "L1-Q3",
+            "$xpath": "L1/Q3",
+            "required": false,
+            "$autoname": "Q3"
+        },
+        {
+            "name": "L2",
+            "type": "begin_group",
+            "$kuid": "47884CfI1",
+            "label": [
+                "Level 2"
+            ],
+            "$qpath": "L1-L2",
+            "$xpath": "L1/L2",
+            "required": false,
+            "$autoname": "L2"
+        },
+        {
+            "name": "Q4",
+            "type": "text",
+            "$kuid": "ubKIAHS84",
+            "label": [
+                "Question 4"
+            ],
+            "$qpath": "L1-L2-Q4",
+            "$xpath": "L1/L2/Q4",
+            "required": false,
+            "$autoname": "Q4"
+        },
+        {
+            "name": "L3",
+            "type": "begin_group",
+            "$kuid": "zbt2lN15i",
+            "label": [
+                "Level 3"
+            ],
+            "$qpath": "L1-L2-L3",
+            "$xpath": "L1/L2/L3",
+            "required": false,
+            "$autoname": "L3"
+        },
+        {
+            "name": "Q5",
+            "type": "text",
+            "$kuid": "WBRkBxCKA",
+            "label": [
+                "Question 5"
+            ],
+            "$qpath": "L1-L2-L3-Q5",
+            "$xpath": "L1/L2/L3/Q5",
+            "required": false,
+            "$autoname": "Q5"
+        },
+        {
+            "type": "end_group",
+            "$kuid": "/zbt2lN15i"
+        },
+        {
+            "type": "end_group",
+            "$kuid": "/47884CfI1"
+        },
+        {
+            "type": "end_group",
+            "$kuid": "/w4Vm1Il76"
+        }
+    ],
+    "choices": [
+        {
+            "name": "panda",
+            "$kuid": "N1uX71lLw",
+            "label": [
+                "panda"
+            ],
+            "list_name": "pop",
+            "$autovalue": "panda"
+        },
+        {
+            "name": "rola",
+            "$kuid": "kVAHkWTmY",
+            "label": [
+                "rola"
+            ],
+            "list_name": "pop",
+            "$autovalue": "rola"
+        }
+    ],
+    "settings": {
+        "version": "20240704101524"
+    },
+    "translated": [
+        "label"
+    ],
+    "translations": [
+        null
+    ]
+}
